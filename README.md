@@ -172,13 +172,13 @@ If we want to complicate the situation a little more, we can select users only w
 ```csharp
 var filter = new FilterContainer
     {
-	Where = new TreeFilter
-	{
-        Field = "Cars",
-        FilterType = WhereFilterType.CountGreaterThan,
-	    Value = 4,
-	    OperandsOfCollections = new TreeFilter
+    	Where = new TreeFilter
 	    {
+          Field = "Cars",
+          FilterType = WhereFilterType.CountGreaterThan,
+	      Value = 4,
+	      OperandsOfCollections = new TreeFilter
+	      {
 		    OperatorType = TreeFilterType.And,
 		    Operands = new List<TreeFilter>
 		    {
@@ -194,10 +194,10 @@ var filter = new FilterContainer
 			    FilterType = WhereFilterType.Equals,
 			    Value = "Mercedes"
 		    	}
-		    }
+		     }
 		
-	    }
-	},
+	        }
+	    },
     };
 ```
 
@@ -217,6 +217,12 @@ Currently FilterType allows you to filter by the following ways:
   * NotContains
   * StartsWith
   * NotStartsWith
+  * LengthEquals
+  * LengthLessThan
+  * LengthGreaterThan
+  * LengthGreaterThanOrEqual
+  * LengthLessThanOrEqual
+
 2. Applied to the listed items without using Value:
   * Any
   * NotAny
@@ -225,6 +231,8 @@ Currently FilterType allows you to filter by the following ways:
   * CountGreaterThan
   * CountLessThanOrEqual
   * CountGreaterThanOrEqual
+  * FirstOrDefaultIsNull
+  * FirstOrDefaultNotNull
   
 ## Entity members
 Available types for single member entities, **which can be filtered**:
